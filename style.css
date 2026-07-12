@@ -1,11 +1,3 @@
-/* =========================================================================
-   Green Wheels Bicycle Rental - Simple Styling
-   This file uses plain, beginner-level CSS: colors, spacing, borders,
-   and a little bit of flexbox for the header. No advanced tricks.
-   ========================================================================= */
-
-/* ---------- General page setup ---------- */
-
 body {
   font-family: Arial, sans-serif;   /* simple, safe font available on every computer */
   background-color: #f2f5ee;        /* light green-ish page background */
@@ -14,7 +6,6 @@ body {
   padding: 0;
 }
 
-/* ---------- Header ---------- */
 
 #page-header {
   background-color: #2f6f4e;   /* green header background */
@@ -29,12 +20,14 @@ body {
 }
 
 #page-header p {
-  margin: 5px 0 0 0;
+  margin: 10px auto 0 auto;
+  max-width: 650px;
   font-size: 14px;
+  line-height: 1.5;
   color: #d7ead9; /* light green text */
 }
 
-/* ---------- Footer ---------- */
+
 
 #page-footer {
   text-align: center;
@@ -43,9 +36,6 @@ body {
   color: #56635c;
 }
 
-/* ---------- "Box" sections (report, form, controls, table) ---------- */
-/* Every section on the page uses this same simple card look:
-   white background, light border, rounded corners, a little shadow. */
 
 .box {
   background-color: white;
@@ -64,7 +54,6 @@ body {
   padding-bottom: 8px;
 }
 
-/* ---------- Form elements ---------- */
 
 label {
   display: inline-block;
@@ -88,7 +77,6 @@ select {
   box-sizing: border-box;
 }
 
-/* ---------- Buttons ---------- */
 
 .btn-primary,
 .btn-secondary {
@@ -149,7 +137,7 @@ tr:hover {
   background-color: #f7faf5; /* highlight row when mouse is over it */
 }
 
-/* Buttons inside the table (Edit / Delete), added by script.js */
+
 #bike-table-body button {
   padding: 6px 12px;
   margin-right: 5px;
