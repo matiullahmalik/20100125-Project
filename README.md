@@ -1,1 +1,1 @@
-# 20100125-Project
+Bicycle Rental and Management System
