@@ -2,24 +2,73 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Green Wheels Bicycle Rental - Bike Management</title>
+  <title>Bicycle Rental and Management System</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- ================= HEADER ================= -->
+  <!-- HEADER -->
   <header id="page-header">
-    <h1>🚲 Green Wheels Bicycle Rental</h1>
-    <p>Bike Management (Proof of Concept)</p>
+    <h1>🚲 Bicycle Rental and Management System</h1>
+    <p>
+      This system helps Green Wheels staff manage their bicycle fleet electronically.
+      Staff can add new bikes, update their details, track availability, and search or
+      sort the fleet — replacing the shop's old paper record books.
+    </p>
   </header>
 
-  <!-- ================= REPORT SECTION ================= -->
+  <!-- REPORT SECTION -->
   <section id="report-section" class="box">
-    <h2>Quick Report</h2>
-    <p id="report-text">Loading report...</p>
+    <h2>Fleet Summary</h2>
+    <p id="report-text">Fetching the latest fleet numbers...</p>
   </section>
 
-  <!-- ================= ADD / EDIT BIKE FORM ================= -->
+  <!-- SEARCH AND SORT -->
+  <section id="controls-section" class="box">
+    <h2>Search &amp; Sort</h2>
+    <label for="search-box">Search:</label>
+    <input
+      type="text"
+      id="search-box"
+      placeholder="Search by number, brand, type, or status"
+      onkeyup="loadBikes()"
+    />
+
+    <label for="sort-select">Sort by:</label>
+    <select id="sort-select" onchange="loadBikes()">
+      <option value="">Newest First</option>
+      <option value="type">Type</option>
+      <option value="brand">Brand</option>
+      <option value="dailyRate">Daily Rate</option>
+      <option value="weeklyRate">Weekly Rate</option>
+      <option value="status">Status</option>
+    </select>
+  </section>
+
+  <!-- BIKE TABLE -->
+  <section id="table-section" class="box">
+    <h2>All Bikes</h2>
+    <table id="bike-table">
+      <thead>
+        <tr>
+          <th>Bike Number</th>
+          <th>Type</th>
+          <th>Brand</th>
+          <th>Colour</th>
+          <th>Daily Rate (&euro;)</th>
+          <th>Weekly Rate (&euro;)</th>
+          <th>Status</th>
+          <th>Last Service Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="bike-table-body">
+        <!-- Rows are added here dynamically by script.js -->
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ADD / EDIT BIKE FORM -->
   <section id="form-section" class="box">
     <h2 id="form-title">Add a New Bike</h2>
 
@@ -39,8 +88,11 @@
     <label for="colour">Colour:</label>
     <input type="text" id="colour" placeholder="e.g. Red" />
 
-    <label for="hourlyRate">Hourly Rate:</label>
-    <input type="number" id="hourlyRate" placeholder="e.g. 5" step="0.01" />
+    <label for="dailyRate">Daily Rate (&euro;):</label>
+    <input type="number" id="dailyRate" placeholder="e.g. 12" step="0.01" />
+
+    <label for="weeklyRate">Weekly Rate (&euro;):</label>
+    <input type="number" id="weeklyRate" placeholder="e.g. 60" step="0.01" />
 
     <label for="status">Status:</label>
     <select id="status">
@@ -55,48 +107,6 @@
     <button id="cancel-button" class="btn-secondary" onclick="cancelEdit()" style="display:none;">Cancel</button>
 
     <p id="form-message"></p>
-  </section>
-
-  <!-- ================= SEARCH AND SORT ================= -->
-  <section id="controls-section" class="box">
-    <label for="search-box">Search:</label>
-    <input
-      type="text"
-      id="search-box"
-      placeholder="Search by number, brand, type, or status"
-      onkeyup="loadBikes()"
-    />
-
-    <label for="sort-select">Sort by:</label>
-    <select id="sort-select" onchange="loadBikes()">
-      <option value="">Newest First</option>
-      <option value="type">Type</option>
-      <option value="brand">Brand</option>
-      <option value="hourlyRate">Hourly Rate</option>
-      <option value="status">Status</option>
-    </select>
-  </section>
-
-  <!-- ================= BIKE TABLE ================= -->
-  <section id="table-section" class="box">
-    <h2>All Bikes</h2>
-    <table id="bike-table">
-      <thead>
-        <tr>
-          <th>Bike Number</th>
-          <th>Type</th>
-          <th>Brand</th>
-          <th>Colour</th>
-          <th>Hourly Rate</th>
-          <th>Status</th>
-          <th>Last Service Date</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody id="bike-table-body">
-        <!-- Rows are added here dynamically by script.js -->
-      </tbody>
-    </table>
   </section>
 
   <footer id="page-footer">
