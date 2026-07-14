@@ -92,7 +92,7 @@ listed here for transparency:
   [W3Schools](https://www.w3schools.com/), then built the entire frontend
   for this project myself from scratch using what I learned there.
 - **Backend (Node.js, Express, MongoDB, Mongoose):** I first followed a
-  tutorial on YouTube to understand how a Node.js/Express/MongoDB backend
+  tutorial on YouTube(https://www.youtube.com/watch?v=p0dCi5D6gDI&list=PLbtI3_MArDOkXRLxdMt1NOMtCS-84ibHH&index=23) to understand how a Node.js/Express/MongoDB backend
   is structured, and then got help from a friend of mine, who is a backend
   developer, while writing the backend code for this project.
 - **MongoDB installation issue:** while installing MongoDB on my computer,
