@@ -7,30 +7,27 @@
 </head>
 <body>
 
-  <!-- HEADER -->
   <header id="page-header">
     <h1>🚲 Bicycle Rental and Management System</h1>
     <p>
       This system helps Green Wheels staff manage their bicycle fleet electronically.
       Staff can add new bikes, update their details, track availability and search or
-      sort the fleet — replacing the shop's old paper record books.
+      sort the fleet — replacing the shop's old paper record book.
     </p>
   </header>
 
-  <!-- REPORT SECTION -->
   <section id="report-section" class="box">
     <h2>Fleet Summary</h2>
     <p id="report-text">Fetching the latest fleet numbers...</p>
   </section>
 
-  <!-- SEARCH AND SORT -->
   <section id="controls-section" class="box">
     <h2>Search &amp; Sort</h2>
     <label for="search-box">Search:</label>
     <input
       type="text"
       id="search-box"
-      placeholder="Search by number, brand, type, or status"
+      placeholder="Search by number, brand, type, status, or person"
       onkeyup="loadBikes()"
     />
 
@@ -45,30 +42,7 @@
     </select>
   </section>
 
-  <!-- BIKE TABLE -->
-  <section id="table-section" class="box">
-    <h2>All Bikes</h2>
-    <table id="bike-table">
-      <thead>
-        <tr>
-          <th>Bike Number</th>
-          <th>Type</th>
-          <th>Brand</th>
-          <th>Colour</th>
-          <th>Daily Rate (&euro;)</th>
-          <th>Weekly Rate (&euro;)</th>
-          <th>Status</th>
-          <th>Last Service Date</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody id="bike-table-body">
-        <!-- Rows are added here dynamically by script.js -->
-      </tbody>
-    </table>
-  </section>
-
-  <!-- ADD / EDIT BIKE FORM -->
+  <!--   ADD / EDIT BIKE FORM  -->
   <section id="form-section" class="box">
     <h2 id="form-title">Add a New Bike</h2>
 
@@ -89,10 +63,10 @@
     <input type="text" id="colour" placeholder="e.g. Red" />
 
     <label for="dailyRate">Daily Rate (&euro;):</label>
-    <input type="number" id="dailyRate" placeholder="e.g. 12" step="0.01" />
+    <input type="number" id="dailyRate" placeholder="e.g. 12" />
 
     <label for="weeklyRate">Weekly Rate (&euro;):</label>
-    <input type="number" id="weeklyRate" placeholder="e.g. 60" step="0.01" />
+    <input type="number" id="weeklyRate" placeholder="e.g. 60" />
 
     <label for="status">Status:</label>
     <select id="status">
@@ -101,6 +75,9 @@
       <option value="Maintenance">Maintenance</option>
     </select>
 
+    <label for="personName">Person Name (renter, or who brought it for Maintenance):</label>
+    <input type="text" id="personName" placeholder="Only needed if Status is Rented or Maintenance" />
+
     <br />
 
     <button id="save-button" class="btn-primary" onclick="saveBike()">Add Bike</button>
@@ -108,6 +85,40 @@
 
     <p id="form-message"></p>
   </section>
+
+  
+  <section id="cards-section" class="box">
+    <h2>All Bikes</h2>
+    <p class="hint-text">Click any bike card to see its full details.</p>
+
+    <!--   script.js fills this with one "bike-card" div per bike   -->
+    <div id="bike-cards-container" class="cards-grid">
+    </div>
+  </section>
+
+  <!--    BIKE DETAIL POPUP (hidden until a card is clicked)   -->
+  <div id="detail-overlay" class="overlay" style="display:none;" onclick="closeDetailIfOverlay(event)">
+    <div id="detail-card" class="detail-card">
+      <button class="close-button" onclick="closeDetail()">&times;</button>
+      <h2 id="detail-bikeNumber">Bike Number</h2>
+      <span id="detail-status" class="status-badge">Status</span>
+
+      <div class="detail-grid">
+        <p><strong>Type:</strong> <span id="detail-bikeType"></span></p>
+        <p><strong>Brand:</strong> <span id="detail-brand"></span></p>
+        <p><strong>Colour:</strong> <span id="detail-colour"></span></p>
+        <p><strong>Daily Rate:</strong> &euro;<span id="detail-dailyRate"></span></p>
+        <p><strong>Weekly Rate:</strong> &euro;<span id="detail-weeklyRate"></span></p>
+        <p><strong>Person:</strong> <span id="detail-personName"></span></p>
+        <p><strong>Last Service Date:</strong> <span id="detail-lastServiceDate"></span></p>
+      </div>
+
+      <div class="detail-actions">
+        <button id="detail-edit-button" class="btn-primary">Edit This Bike</button>
+        <button id="detail-delete-button" class="btn-secondary">Delete This Bike</button>
+      </div>
+    </div>
+  </div>
 
   <footer id="page-footer">
     <p>Green Wheels Bicycle Rental</p>
