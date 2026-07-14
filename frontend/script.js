@@ -1,5 +1,5 @@
 // Backend port running link
-const API_URL = "http://localhost:5000/api/bikes";
+const API_URL = "http://34.51.222.210:5000/api/bikes";
 let currentDetailBikeId = "";
 window.onload = function () {
   loadBikes();
