@@ -29,6 +29,10 @@ A full Green Wheels system would eventually include these modules:
 Only **Bike Management** is implemented in this proof-of-concept, as required
 by the assignment brief.
 
+
+**🔗 Live Demo:** http://34.51.222.210:8080/
+
+
 ## 3. Features
 
 - **Add a new bike** with its number, type, brand, colour, daily rate,
